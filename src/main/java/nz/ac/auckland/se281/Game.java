@@ -13,7 +13,7 @@ public class Game {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     player = options[0];
     round = 1;
-    aiPlayer = new AIPlayer(difficulty);
+    aiPlayer = new AIPlayer(difficulty, choice);
   }
 
   public void play() {
@@ -37,7 +37,19 @@ public class Game {
     }
 
     MessageCli.PRINT_INFO_HAND.printMessage(player, input);
-    aiPlayer.getMove();
+    aiPlayer.printMove();
+
+    int sum = Integer.parseInt(input) + aiPlayer.getMove();
+    String winner;
+    if (Utils.isEven(sum)) {
+      if (aiPlayer.getChoice() == Choice.EVEN) {
+        winner = aiPlayer.getName();
+      } else {
+        winner = player;
+      }
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(sum), "EVEN", winner);
+    }
+
     round++;
   }
 
