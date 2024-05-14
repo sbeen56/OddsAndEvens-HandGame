@@ -15,6 +15,22 @@ public class Game {
   public void play() {
     MessageCli.START_ROUND.printMessage(Integer.toString(round));
     MessageCli.ASK_INPUT.printMessage();
+    String input = Utils.scanner.nextLine();
+
+    Boolean validInteger = false;
+    while (!validInteger) {
+      if (Utils.isInteger(input)) {
+        if (Integer.parseInt(input) >= 0 && Integer.parseInt(input) <= 5) {
+          validInteger = true;
+        }
+      }
+      if (validInteger) {
+        break;
+      } else {
+        MessageCli.INVALID_INPUT.printMessage();
+        input = Utils.scanner.nextLine();
+      }
+    }
   }
 
   public void endGame() {}
