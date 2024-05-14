@@ -50,6 +50,14 @@ public class Game {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(sum), "EVEN", winner);
     }
 
+    if (Utils.isOdd(sum)) {
+      if (aiPlayer.getChoice() == Choice.ODD) {
+        winner = aiPlayer.getName();
+      } else {
+        winner = player;
+      }
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(sum), "ODD", winner);
+    }
     round++;
   }
 
