@@ -7,11 +7,13 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Game {
   private int round;
   private String player;
+  private AIPlayer aiPlayer;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     player = options[0];
     round = 1;
+    aiPlayer = new AIPlayer(difficulty);
   }
 
   public void play() {
@@ -35,6 +37,7 @@ public class Game {
     }
 
     MessageCli.PRINT_INFO_HAND.printMessage(player, input);
+    aiPlayer.getMove();
     round++;
   }
 
