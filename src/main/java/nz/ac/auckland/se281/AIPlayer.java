@@ -8,6 +8,9 @@ public class AIPlayer {
   private String ai = "HAL-9000";
   private Choice choice;
   private int finger;
+  private int oddCount;
+  private int evenCount;
+  private int round;
 
   public AIPlayer(Difficulty difficulty, Choice choice) {
     switch (choice) {
@@ -27,14 +30,22 @@ public class AIPlayer {
       case EASY:
         this.level = new EasyLevel();
         break;
+      case MEDIUM:
+        this.level = new MediumLevel();
 
       default:
         break;
     }
   }
 
+  public void setPlayer(int oddCount, int evenCount, int round) {
+    this.round = round;
+    this.oddCount = oddCount;
+    this.evenCount = evenCount;
+  }
+
   public int makeMove() {
-    this.finger = level.getMove();
+    this.finger = level.getMove(round, oddCount, evenCount, choice);
     return finger;
   }
 

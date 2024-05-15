@@ -8,15 +8,20 @@ public class Game {
   private int round;
   private String player;
   private AIPlayer aiPlayer;
+  private int oddCount;
+  private int evenCount;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     player = options[0];
     round = 1;
+    oddCount = 0;
+    evenCount = 0;
     aiPlayer = new AIPlayer(difficulty, choice);
   }
 
   public void play() {
+    aiPlayer.setPlayer(round, oddCount, evenCount);
     MessageCli.START_ROUND.printMessage(Integer.toString(round));
     MessageCli.ASK_INPUT.printMessage();
     String input = Utils.scanner.nextLine();
@@ -58,6 +63,13 @@ public class Game {
       }
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(sum), "ODD", winner);
     }
+
+    if (Utils.isEven(Integer.parseInt(input))) {
+      evenCount++;
+    } else {
+      oddCount++;
+    }
+
     round++;
   }
 
