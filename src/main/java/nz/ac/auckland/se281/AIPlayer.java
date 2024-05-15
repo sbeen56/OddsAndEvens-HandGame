@@ -32,6 +32,8 @@ public class AIPlayer {
         break;
       case MEDIUM:
         this.level = new MediumLevel();
+      case HARD:
+        this.level = new HardLevel();
 
       default:
         break;
