@@ -22,6 +22,11 @@ public class Game {
   }
 
   public void play() {
+    if (player == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+
     aiPlayer.setPlayer(oddCount, evenCount, round, winner);
     MessageCli.START_ROUND.printMessage(Integer.toString(round));
     MessageCli.ASK_INPUT.printMessage();
