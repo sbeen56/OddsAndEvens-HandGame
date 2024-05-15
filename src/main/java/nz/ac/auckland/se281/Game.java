@@ -18,6 +18,7 @@ public class Game {
     round = 1;
     oddCount = 0;
     evenCount = 0;
+    winner = null;
     aiPlayer = new AIPlayer(difficulty, choice);
   }
 
