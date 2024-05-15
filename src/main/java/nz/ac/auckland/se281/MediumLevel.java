@@ -7,7 +7,7 @@ public class MediumLevel implements Level {
 
   @Override
   public int getMove(int round, int oddCount, int evenCount, Choice choice) {
-    this.strategy = new RandomStrategy();
+    this.strategy = new TopStrategy();
     return strategy.play(round, oddCount, evenCount, choice);
   }
 }
