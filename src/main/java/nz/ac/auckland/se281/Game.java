@@ -85,7 +85,12 @@ public class Game {
     round++;
   }
 
-  public void endGame() {}
+  public void endGame() {
+    int numberOfRounds = round - 1;
+    if (playerWinCount > numberOfRounds / 2) {
+      MessageCli.PRINT_END_GAME.printMessage(player);
+    }
+  }
 
   public void showStats() {
     if (player == null) {
