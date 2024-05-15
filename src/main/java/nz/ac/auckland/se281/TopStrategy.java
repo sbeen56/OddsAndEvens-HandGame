@@ -2,6 +2,10 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Choice;
 
+/**
+ * This class implements the Strategy interface. This strategy involves monitors how frequently the
+ * human player chooses odd or even numbers.
+ */
 public class TopStrategy implements Strategy {
 
   /**

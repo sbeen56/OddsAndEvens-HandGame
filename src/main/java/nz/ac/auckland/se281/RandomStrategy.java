@@ -2,6 +2,10 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Choice;
 
+/**
+ * This class implements the Strategy interface. This strategy involves generating a random number
+ * between 0 and 5.
+ */
 public class RandomStrategy implements Strategy {
 
   /**
