@@ -9,6 +9,11 @@ public class MediumAIPlayer implements AIPlayer {
   private int finger;
 
   @Override
+  public void setStrategy(Strategy strategy) {
+    this.strategy = strategy;
+  }
+
+  @Override
   public void setAIPlayer(Choice choice) {
     switch (choice) {
       case EVEN:
@@ -27,9 +32,9 @@ public class MediumAIPlayer implements AIPlayer {
   @Override
   public int makeMove(String winner, int round, int oddCount, int evenCount) {
     if (round < 4) {
-      this.strategy = new RandomStrategy();
+      setStrategy(new RandomStrategy());
     } else {
-      this.strategy = new TopStrategy();
+      setStrategy(new TopStrategy());
     }
     this.finger = strategy.play(round, oddCount, evenCount, choice);
     return finger;

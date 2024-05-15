@@ -9,6 +9,11 @@ public class HardAIPlayer implements AIPlayer {
   private int finger;
 
   @Override
+  public void setStrategy(Strategy strategy) {
+    this.strategy = strategy;
+  }
+
+  @Override
   public void setAIPlayer(Choice choice) {
     switch (choice) {
       case EVEN:
@@ -27,13 +32,13 @@ public class HardAIPlayer implements AIPlayer {
   @Override
   public int makeMove(String winner, int round, int oddCount, int evenCount) {
     if (round < 4) {
-      this.strategy = new RandomStrategy();
+      setStrategy(new RandomStrategy());
     } else {
       if (!winner.equals("HAL-9000")) {
         if (strategy instanceof RandomStrategy) {
-          this.strategy = new TopStrategy();
+          setStrategy(new TopStrategy());
         } else {
-          this.strategy = new RandomStrategy();
+          setStrategy(new RandomStrategy());
         }
       }
     }

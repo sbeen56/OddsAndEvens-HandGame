@@ -9,6 +9,11 @@ public class EasyAIPlayer implements AIPlayer {
   private int finger;
 
   @Override
+  public void setStrategy(Strategy strategy) {
+    this.strategy = strategy;
+  }
+
+  @Override
   public void setAIPlayer(Choice choice) {
     switch (choice) {
       case EVEN:
@@ -26,7 +31,7 @@ public class EasyAIPlayer implements AIPlayer {
 
   @Override
   public int makeMove(String winner, int round, int oddCount, int evenCount) {
-    this.strategy = new RandomStrategy();
+    setStrategy(new RandomStrategy());
     this.finger = strategy.play(round, oddCount, evenCount, choice);
     return finger;
   }
