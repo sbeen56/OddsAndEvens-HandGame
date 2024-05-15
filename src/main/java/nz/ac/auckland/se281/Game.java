@@ -86,6 +86,7 @@ public class Game {
   }
 
   public void endGame() {
+    showStats();
     int playerLostCount = round - playerWinCount - 1;
     if (playerWinCount > playerLostCount) {
       MessageCli.PRINT_END_GAME.printMessage(player);
@@ -94,6 +95,7 @@ public class Game {
     } else {
       MessageCli.PRINT_END_GAME.printMessage("HAL-9000");
     }
+    player = null;
   }
 
   public void showStats() {
