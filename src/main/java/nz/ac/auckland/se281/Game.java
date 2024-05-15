@@ -21,7 +21,7 @@ public class Game {
   }
 
   public void play() {
-    aiPlayer.setPlayer(round, oddCount, evenCount);
+    aiPlayer.setPlayer(oddCount, evenCount, round);
     MessageCli.START_ROUND.printMessage(Integer.toString(round));
     MessageCli.ASK_INPUT.printMessage();
     String input = Utils.scanner.nextLine();
