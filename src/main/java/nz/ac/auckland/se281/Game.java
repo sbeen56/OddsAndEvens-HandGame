@@ -89,8 +89,18 @@ public class Game {
   }
 
   public void endGame() {
-    showStats();
+    if (player == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+
     int playerLostCount = round - playerWinCount - 1;
+
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        player, Integer.toString(playerWinCount), Integer.toString(playerLostCount));
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        "HAL-9000", Integer.toString(playerLostCount), Integer.toString(playerWinCount));
+
     if (playerWinCount > playerLostCount) {
       MessageCli.PRINT_END_GAME.printMessage(player);
     } else if (playerWinCount == playerLostCount) {
