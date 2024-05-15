@@ -86,9 +86,11 @@ public class Game {
   }
 
   public void endGame() {
-    int numberOfRounds = round - 1;
-    if (playerWinCount > numberOfRounds / 2) {
+    int playerLostCount = round - playerWinCount - 1;
+    if (playerWinCount > playerLostCount) {
       MessageCli.PRINT_END_GAME.printMessage(player);
+    } else if (playerWinCount == playerLostCount) {
+      MessageCli.PRINT_END_GAME_TIE.printMessage();
     } else {
       MessageCli.PRINT_END_GAME.printMessage("HAL-9000");
     }
