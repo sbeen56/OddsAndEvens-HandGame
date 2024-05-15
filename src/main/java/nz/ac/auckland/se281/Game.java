@@ -11,6 +11,7 @@ public class Game {
   private int oddCount;
   private int evenCount;
   private String winner;
+  private int playerWinCount;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
@@ -19,6 +20,7 @@ public class Game {
     oddCount = 0;
     evenCount = 0;
     winner = null;
+    playerWinCount = 0;
     aiPlayer = new AIPlayer(difficulty, choice);
   }
 
@@ -70,6 +72,10 @@ public class Game {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(Integer.toString(sum), "ODD", winner);
     }
 
+    if (winner == player) {
+      playerWinCount++;
+    }
+
     if (Utils.isEven(Integer.parseInt(input))) {
       evenCount++;
     } else {
@@ -84,6 +90,13 @@ public class Game {
   public void showStats() {
     if (player == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
     }
+
+    int playerLostCount = round - playerWinCount - 1;
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        player, Integer.toString(playerWinCount), Integer.toString(playerLostCount));
+    MessageCli.PRINT_PLAYER_WINS.printMessage(
+        "HAL-9000", Integer.toString(playerLostCount), Integer.toString(playerWinCount));
   }
 }
