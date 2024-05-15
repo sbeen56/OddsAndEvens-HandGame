@@ -7,7 +7,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Game {
   private int round;
   private String player;
-  private AIPlayer aiPlayer;
+  private ArtIntPlayer aiPlayer;
   private int oddCount;
   private int evenCount;
   private String winner;
@@ -23,7 +23,7 @@ public class Game {
     winner = null;
     playerWinCount = 0;
     playerChoice = choice;
-    aiPlayer = AIPlayerFactory.createAiPlayer(difficulty);
+    aiPlayer = ArtIntPlayerFactory.createAiPlayer(difficulty);
   }
 
   public void play() {
@@ -32,7 +32,7 @@ public class Game {
       return;
     }
 
-    aiPlayer.setAIPlayer(playerChoice);
+    aiPlayer.setArtIntPlayer(playerChoice);
     MessageCli.START_ROUND.printMessage(Integer.toString(round));
     MessageCli.ASK_INPUT.printMessage();
     String input = Utils.scanner.nextLine();
@@ -58,8 +58,8 @@ public class Game {
 
     int sum = Integer.parseInt(input) + aiPlayer.getMove();
     if (Utils.isEven(sum)) {
-      if (aiPlayer.getAIChoice() == Choice.EVEN) {
-        winner = aiPlayer.getAIName();
+      if (aiPlayer.getArtIntChoice() == Choice.EVEN) {
+        winner = aiPlayer.getArtIntName();
       } else {
         winner = player;
       }
@@ -67,8 +67,8 @@ public class Game {
     }
 
     if (Utils.isOdd(sum)) {
-      if (aiPlayer.getAIChoice() == Choice.ODD) {
-        winner = aiPlayer.getAIName();
+      if (aiPlayer.getArtIntChoice() == Choice.ODD) {
+        winner = aiPlayer.getArtIntName();
       } else {
         winner = player;
       }

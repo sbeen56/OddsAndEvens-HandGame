@@ -2,7 +2,7 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Choice;
 
-public class MediumAIPlayer implements AIPlayer {
+public class EasyArtIntPlayer implements ArtIntPlayer {
   private Strategy strategy;
   private String ai = "HAL-9000";
   private Choice choice;
@@ -14,7 +14,7 @@ public class MediumAIPlayer implements AIPlayer {
   }
 
   @Override
-  public void setAIPlayer(Choice choice) {
+  public void setArtIntPlayer(Choice choice) {
     switch (choice) {
       case EVEN:
         this.choice = Choice.ODD;
@@ -31,11 +31,7 @@ public class MediumAIPlayer implements AIPlayer {
 
   @Override
   public int makeMove(String winner, int round, int oddCount, int evenCount) {
-    if (round < 4) {
-      setStrategy(new RandomStrategy());
-    } else {
-      setStrategy(new TopStrategy());
-    }
+    setStrategy(new RandomStrategy());
     this.finger = strategy.play(round, oddCount, evenCount, choice);
     return finger;
   }
@@ -46,12 +42,12 @@ public class MediumAIPlayer implements AIPlayer {
   }
 
   @Override
-  public Choice getAIChoice() {
+  public Choice getArtIntChoice() {
     return choice;
   }
 
   @Override
-  public String getAIName() {
+  public String getArtIntName() {
     return ai;
   }
 

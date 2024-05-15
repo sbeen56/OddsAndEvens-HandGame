@@ -2,18 +2,18 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Choice;
 
-public interface AIPlayer {
+public interface ArtIntPlayer {
   void setStrategy(Strategy strategy);
 
-  void setAIPlayer(Choice choice);
+  void setArtIntPlayer(Choice choice);
 
   int makeMove(String winner, int round, int oddCount, int evenCount);
 
   int getMove();
 
-  Choice getAIChoice();
+  Choice getArtIntChoice();
 
-  String getAIName();
+  String getArtIntName();
 
   void printMove();
 }

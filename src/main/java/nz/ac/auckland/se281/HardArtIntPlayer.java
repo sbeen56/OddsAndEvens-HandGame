@@ -2,7 +2,7 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Choice;
 
-public class HardAIPlayer implements AIPlayer {
+public class HardArtIntPlayer implements ArtIntPlayer {
   private Strategy strategy;
   private String ai = "HAL-9000";
   private Choice choice;
@@ -14,7 +14,7 @@ public class HardAIPlayer implements AIPlayer {
   }
 
   @Override
-  public void setAIPlayer(Choice choice) {
+  public void setArtIntPlayer(Choice choice) {
     switch (choice) {
       case EVEN:
         this.choice = Choice.ODD;
@@ -53,12 +53,12 @@ public class HardAIPlayer implements AIPlayer {
   }
 
   @Override
-  public Choice getAIChoice() {
+  public Choice getArtIntChoice() {
     return choice;
   }
 
   @Override
-  public String getAIName() {
+  public String getArtIntName() {
     return ai;
   }
 
