@@ -14,6 +14,15 @@ public class Game {
   private int playerWinCount;
   private Choice playerChoice;
 
+  /**
+   * This method starts a new game by reseting everything. It also initializes the playerChoice
+   * whether the human player choses ODD or EVEN and aiPlayer based on the difficulty.
+   *
+   * @param difficulty difficulty of the game
+   * @param choice choice of the player
+   * @param options name of the player
+   * @return void
+   */
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
     player = options[0];
@@ -26,6 +35,15 @@ public class Game {
     aiPlayer = ArtIntPlayerFactory.createAiPlayer(difficulty);
   }
 
+  /**
+   * This method plays a round of the game. It asks the player for input until a valid input is
+   * given. It gets a random number for the AI player and calculates the sum of the two numbers. It
+   * then determines the winner based on the sum and the choices of the players. It prints the
+   * outcome of the round. It also keeps track of the number of rounds played and the number of wins
+   * for the player.
+   *
+   * @return void
+   */
   public void play() {
     if (player == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -88,6 +106,13 @@ public class Game {
     round++;
   }
 
+  /**
+   * This method ends the game and prints the number of wins for the player and the AI player, and
+   * the overall winner of the game. It resets the player to null. If the game has not started, it
+   * prints a message saying the game has not been started.
+   *
+   * @return void
+   */
   public void endGame() {
     if (player == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -111,6 +136,13 @@ public class Game {
     player = null;
   }
 
+  /**
+   * This method shows the statistics of the game. It prints the number of wins and losts for the
+   * player and the AI player. If the game has not started, it prints a message saying the game has
+   * not been started.
+   *
+   * @return void
+   */
   public void showStats() {
     if (player == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
