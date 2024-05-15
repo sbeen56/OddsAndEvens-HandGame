@@ -10,6 +10,7 @@ public class Game {
   private AIPlayer aiPlayer;
   private int oddCount;
   private int evenCount;
+  private String winner;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
@@ -21,7 +22,7 @@ public class Game {
   }
 
   public void play() {
-    aiPlayer.setPlayer(oddCount, evenCount, round);
+    aiPlayer.setPlayer(oddCount, evenCount, round, winner);
     MessageCli.START_ROUND.printMessage(Integer.toString(round));
     MessageCli.ASK_INPUT.printMessage();
     String input = Utils.scanner.nextLine();
@@ -45,7 +46,6 @@ public class Game {
     aiPlayer.printMove();
 
     int sum = Integer.parseInt(input) + aiPlayer.getMove();
-    String winner;
     if (Utils.isEven(sum)) {
       if (aiPlayer.getChoice() == Choice.EVEN) {
         winner = aiPlayer.getName();

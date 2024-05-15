@@ -11,6 +11,7 @@ public class AIPlayer {
   private int oddCount;
   private int evenCount;
   private int round;
+  private String winner;
 
   public AIPlayer(Difficulty difficulty, Choice choice) {
     switch (choice) {
@@ -42,14 +43,15 @@ public class AIPlayer {
     }
   }
 
-  public void setPlayer(int oddCount, int evenCount, int round) {
+  public void setPlayer(int oddCount, int evenCount, int round, String winner) {
     this.round = round;
     this.oddCount = oddCount;
     this.evenCount = evenCount;
+    this.winner = winner;
   }
 
   public int makeMove() {
-    this.finger = level.getMove(round, oddCount, evenCount, choice);
+    this.finger = level.getMove(winner, round, oddCount, evenCount, choice);
     return finger;
   }
 

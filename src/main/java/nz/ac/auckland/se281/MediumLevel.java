@@ -6,7 +6,7 @@ public class MediumLevel implements Level {
   private Strategy strategy;
 
   @Override
-  public int getMove(int round, int oddCount, int evenCount, Choice choice) {
+  public int getMove(String winner, int round, int oddCount, int evenCount, Choice choice) {
     if (round < 4) {
       this.strategy = new RandomStrategy();
     } else {

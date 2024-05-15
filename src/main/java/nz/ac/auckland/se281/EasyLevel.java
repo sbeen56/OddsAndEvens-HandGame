@@ -6,7 +6,7 @@ public class EasyLevel implements Level {
   private Strategy strategy;
 
   @Override
-  public int getMove(int round, int oddCount, int evenCount, Choice choice) {
+  public int getMove(String winner, int round, int oddCount, int evenCount, Choice choice) {
     this.strategy = new RandomStrategy();
     return strategy.play(round, oddCount, evenCount, choice);
   }
