@@ -12,6 +12,7 @@ public class Game {
   private int evenCount;
   private String winner;
   private int playerWinCount;
+  private Choice playerChoice;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
@@ -21,7 +22,8 @@ public class Game {
     evenCount = 0;
     winner = null;
     playerWinCount = 0;
-    aiPlayer = new AIPlayer(difficulty, choice);
+    playerChoice = choice;
+    aiPlayer = AIPlayerFactory.createAiPlayer(difficulty);
   }
 
   public void play() {
@@ -30,7 +32,7 @@ public class Game {
       return;
     }
 
-    aiPlayer.setPlayer(oddCount, evenCount, round, winner);
+    aiPlayer.setAIPlayer(playerChoice);
     MessageCli.START_ROUND.printMessage(Integer.toString(round));
     MessageCli.ASK_INPUT.printMessage();
     String input = Utils.scanner.nextLine();
@@ -51,12 +53,13 @@ public class Game {
     }
 
     MessageCli.PRINT_INFO_HAND.printMessage(player, input);
+    aiPlayer.makeMove(winner, round, oddCount, evenCount);
     aiPlayer.printMove();
 
     int sum = Integer.parseInt(input) + aiPlayer.getMove();
     if (Utils.isEven(sum)) {
-      if (aiPlayer.getChoice() == Choice.EVEN) {
-        winner = aiPlayer.getName();
+      if (aiPlayer.getAIChoice() == Choice.EVEN) {
+        winner = aiPlayer.getAIName();
       } else {
         winner = player;
       }
@@ -64,8 +67,8 @@ public class Game {
     }
 
     if (Utils.isOdd(sum)) {
-      if (aiPlayer.getChoice() == Choice.ODD) {
-        winner = aiPlayer.getName();
+      if (aiPlayer.getAIChoice() == Choice.ODD) {
+        winner = aiPlayer.getAIName();
       } else {
         winner = player;
       }
