@@ -31,11 +31,14 @@ public class HardArtIntPlayer implements ArtIntPlayer {
   public void setArtIntPlayer(Choice choice) {
     switch (choice) {
       case EVEN:
-        this.choice = Choice.ODD;
+        this.choice =
+            Choice.ODD; // Set the choice of the AI player to ODD when the human player chooses EVEN
         break;
 
       case ODD:
-        this.choice = Choice.EVEN;
+        this.choice =
+            Choice
+                .EVEN; // Set the choice of the AI player to EVEN when the human player chooses ODD
         break;
 
       default:
@@ -57,17 +60,20 @@ public class HardArtIntPlayer implements ArtIntPlayer {
   @Override
   public int makeMove(String winner, int round, int oddCount, int evenCount) {
     if (round < 4) {
-      setStrategy(new RandomStrategy());
+      setStrategy(new RandomStrategy()); // Set the strategy to random for the first 3 rounds
     } else {
+      // Switch between top and random strategy based on the winner of the previous round
       if (!winner.equals("HAL-9000")) {
         if (strategy instanceof RandomStrategy) {
-          setStrategy(new TopStrategy());
+          setStrategy(new TopStrategy()); // Set the strategy to top if strategy was random before.
         } else {
-          setStrategy(new RandomStrategy());
+          setStrategy(
+              new RandomStrategy()); // Set the strategy to random if strategy was top before.
         }
       }
     }
 
+    // Generate a finger using the strategy and save it in the finger variable.
     this.finger = strategy.play(round, oddCount, evenCount, choice);
     return finger;
   }

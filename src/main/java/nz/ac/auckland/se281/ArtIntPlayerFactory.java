@@ -2,9 +2,7 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Difficulty;
 
-/**
- * This class is a factory class that creates an AI player based on the difficulty level.
- */
+/** This class is a factory class that creates an AI player based on the difficulty level. */
 public class ArtIntPlayerFactory {
 
   /**
@@ -19,11 +17,11 @@ public class ArtIntPlayerFactory {
   public static ArtIntPlayer createAiPlayer(Difficulty difficulty) {
     switch (difficulty) {
       case EASY:
-        return new EasyArtIntPlayer();
+        return new EasyArtIntPlayer(); // Make easy AI player when difficulty is easy.
       case MEDIUM:
-        return new MediumArtIntPlayer();
+        return new MediumArtIntPlayer(); // Make medium AI player when difficulty is medium.
       case HARD:
-        return new HardArtIntPlayer();
+        return new HardArtIntPlayer(); // Make hard AI player when difficulty is hard.
 
       default:
         return null;

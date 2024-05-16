@@ -31,11 +31,14 @@ public class EasyArtIntPlayer implements ArtIntPlayer {
   public void setArtIntPlayer(Choice choice) {
     switch (choice) {
       case EVEN:
-        this.choice = Choice.ODD;
+        this.choice =
+            Choice.ODD; // Set the choice of the AI player to ODD when the human player chooses EVEN
         break;
 
       case ODD:
-        this.choice = Choice.EVEN;
+        this.choice =
+            Choice
+                .EVEN; // Set the choice of the AI player to EVEN when the human player chooses ODD
         break;
 
       default:
