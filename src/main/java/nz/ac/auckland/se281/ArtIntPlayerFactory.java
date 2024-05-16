@@ -2,6 +2,9 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Difficulty;
 
+/**
+ * This class is a factory class that creates an AI player based on the difficulty level.
+ */
 public class ArtIntPlayerFactory {
 
   /**
